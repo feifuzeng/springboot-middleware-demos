@@ -32,6 +32,7 @@
         <module>springboot-middleware-elasticsearch</module>
         <module>springboot-middleware-redis</module>
         <module>springboot-middleware-kafka</module>
+        <module>springboot-middleware-mybatis-plus</module>
     </modules>
 
     <dependencies>
