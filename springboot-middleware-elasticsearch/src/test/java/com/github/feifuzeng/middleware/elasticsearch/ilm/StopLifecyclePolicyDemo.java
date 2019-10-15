@@ -1,13 +1,11 @@
 package com.github.feifuzeng.middleware.elasticsearch.ilm;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.core.AcknowledgedResponse;
-import org.elasticsearch.client.indexlifecycle.StartILMRequest;
 import org.elasticsearch.client.indexlifecycle.StopILMRequest;
 import org.junit.Test;
 
@@ -24,13 +22,11 @@ import javax.annotation.Resource;
 public class StopLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
     public void stop() throws Exception {
 
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /**2. 请求*/
         StopILMRequest request = new StopILMRequest();

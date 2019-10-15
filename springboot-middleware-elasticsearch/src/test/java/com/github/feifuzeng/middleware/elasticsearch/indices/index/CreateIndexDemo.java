@@ -1,7 +1,6 @@
-package com.github.feifuzeng.middleware.elasticsearch.indices;
+package com.github.feifuzeng.middleware.elasticsearch.indices.index;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import com.github.feifuzeng.middleware.elasticsearch.util.Consts;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.client.RequestOptions;
@@ -26,14 +25,12 @@ import java.util.Map;
 public class CreateIndexDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
 
     @Test
     public void create() throws Exception {
 
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /** 2. Create Index Request*/
         CreateIndexRequest request = new CreateIndexRequest(Consts.INDEX_NAME);

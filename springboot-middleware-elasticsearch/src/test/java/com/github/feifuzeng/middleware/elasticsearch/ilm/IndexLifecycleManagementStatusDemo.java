@@ -1,16 +1,13 @@
 package com.github.feifuzeng.middleware.elasticsearch.ilm;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.core.AcknowledgedResponse;
 import org.elasticsearch.client.indexlifecycle.LifecycleManagementStatusRequest;
 import org.elasticsearch.client.indexlifecycle.LifecycleManagementStatusResponse;
 import org.elasticsearch.client.indexlifecycle.OperationMode;
-import org.elasticsearch.client.indexlifecycle.StartILMRequest;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -26,13 +23,10 @@ import javax.annotation.Resource;
 public class IndexLifecycleManagementStatusDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
-    public void status() throws Exception{
-
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+    public void status() throws Exception {
 
         /**2. 请求*/
         LifecycleManagementStatusRequest request =

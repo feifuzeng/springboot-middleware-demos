@@ -29,7 +29,7 @@ import java.io.IOException;
 public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private ElacticSearchSimpleConfig elacticSearchSimpleConfig;
 
     private static final String  ELASTICSEARCH_INDEX_NAME = "testindex";
 
@@ -37,7 +37,7 @@ public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareE
 
     @Test
     public void test()throws Exception {
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+        RestHighLevelClient client = elacticSearchSimpleConfig.initClient();
         log.info(client.indices());
         client.close();
     }
@@ -48,7 +48,7 @@ public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareE
      */
     @Test
     public  void createEmployee() throws Exception {
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+        RestHighLevelClient client = elacticSearchSimpleConfig.initClient();
         XContentBuilder builder = XContentFactory.jsonBuilder();
         builder.startObject();
         {
@@ -71,7 +71,7 @@ public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareE
      */
     @Test
     public void getEmployee() throws IOException {
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+        RestHighLevelClient client = elacticSearchSimpleConfig.initClient();
         GetRequest request = new GetRequest(ELASTICSEARCH_INDEX_NAME, ELASTICSEARCH_TYPE_NAME,"1");
         GetResponse response = client.get(request, RequestOptions.DEFAULT);
         System.out.println(response.getSourceAsString());
@@ -83,7 +83,7 @@ public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareE
      */
     @Test
     public void updateEmployee() throws IOException {
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+        RestHighLevelClient client = elacticSearchSimpleConfig.initClient();
         XContentBuilder builder = XContentFactory.jsonBuilder();
         builder.startObject();
         {
@@ -101,7 +101,7 @@ public class ElasticSearchRestHighLevelClientTests extends SpringbootMiddlewareE
      */
     @Test
     public  void deleteEmployee() throws IOException {
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+        RestHighLevelClient client = elacticSearchSimpleConfig.initClient();
         DeleteRequest request = new DeleteRequest(ELASTICSEARCH_INDEX_NAME,ELASTICSEARCH_TYPE_NAME, "1");
         DeleteResponse response = client.delete(request, RequestOptions.DEFAULT);
         System.out.println(response.getResult());

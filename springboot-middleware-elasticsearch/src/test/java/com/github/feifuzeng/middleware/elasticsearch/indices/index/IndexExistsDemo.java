@@ -1,7 +1,6 @@
-package com.github.feifuzeng.middleware.elasticsearch.indices;
+package com.github.feifuzeng.middleware.elasticsearch.indices.index;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import com.github.feifuzeng.middleware.elasticsearch.util.Consts;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.client.RequestOptions;
@@ -22,17 +21,15 @@ import javax.annotation.Resource;
 public class IndexExistsDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
-    public void exist() throws Exception{
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
+    public void exist() throws Exception {
 
         GetIndexRequest request = new GetIndexRequest(Consts.INDEX_NAME);
 
         boolean exists = client.indices().exists(request, RequestOptions.DEFAULT);
 
-        log.info("索引:{}是否存在：{}",Consts.INDEX_NAME,exists);
+        log.info("索引:{}是否存在：{}", Consts.INDEX_NAME, exists);
     }
 }

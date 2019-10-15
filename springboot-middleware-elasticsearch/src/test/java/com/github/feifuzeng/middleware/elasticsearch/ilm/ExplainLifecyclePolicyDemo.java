@@ -1,7 +1,6 @@
 package com.github.feifuzeng.middleware.elasticsearch.ilm;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import com.github.feifuzeng.middleware.elasticsearch.util.Consts;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.action.ActionListener;
@@ -26,12 +25,10 @@ import java.util.Map;
 public class ExplainLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
     public void explain() throws Exception {
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /**2. 请求*/
         ExplainLifecycleRequest request =
@@ -39,14 +36,14 @@ public class ExplainLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearc
         /**3. 执行*/
 
         /**4. 同步执行*/
-        ExplainLifecycleResponse response = synchronousExplain(client,request);
+        ExplainLifecycleResponse response = synchronousExplain(client, request);
 
         Map<String, IndexLifecycleExplainResponse> indices =
                 response.getIndexResponses();
         IndexLifecycleExplainResponse myIndex = indices.get(Consts.INDEX_NAME);
         String policyName = myIndex.getPolicyName();
         boolean isManaged = myIndex.managedByILM();
-        if(!isManaged){
+        if (!isManaged) {
             log.info("{}没有配置索引策略", Consts.INDEX_NAME);
             return;
         }
@@ -58,7 +55,7 @@ public class ExplainLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearc
         long stepTime = myIndex.getStepTime();
 
         String failedStep = myIndex.getFailedStep();
-        log.info("{}索引策略信息如下-->policyName:{},phase:{},step:{}", Consts.INDEX_NAME,policyName,phase,step);
+        log.info("{}索引策略信息如下-->policyName:{},phase:{},step:{}", Consts.INDEX_NAME, policyName, phase, step);
 
         /**4. 异步执行*/
 //        aynchronousDelete(client,request);

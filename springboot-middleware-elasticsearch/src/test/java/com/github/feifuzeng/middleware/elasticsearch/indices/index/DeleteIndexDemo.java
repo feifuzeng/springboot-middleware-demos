@@ -1,7 +1,6 @@
-package com.github.feifuzeng.middleware.elasticsearch.indices;
+package com.github.feifuzeng.middleware.elasticsearch.indices.index;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import com.github.feifuzeng.middleware.elasticsearch.util.Consts;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.ElasticsearchException;
@@ -27,13 +26,11 @@ import javax.annotation.Resource;
 public class DeleteIndexDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
     public void delete() throws Exception {
 
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /**2. Delete index Request*/
         DeleteIndexRequest request = new DeleteIndexRequest(Consts.INDEX_NAME);
@@ -48,7 +45,8 @@ public class DeleteIndexDemo extends SpringbootMiddlewareElasticsearchApplicatio
 
         request.indicesOptions(IndicesOptions.lenientExpandOpen());
 
-        synchronousDelete(client, request);
+        AcknowledgedResponse response = synchronousDelete(client, request);
+        log.info("索引:{}删除成功？：{}", Consts.INDEX_NAME, response.isAcknowledged());
 
     }
 

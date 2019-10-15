@@ -1,17 +1,13 @@
 package com.github.feifuzeng.middleware.elasticsearch.ilm;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import com.github.feifuzeng.middleware.elasticsearch.util.Consts;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.core.AcknowledgedResponse;
-import org.elasticsearch.client.indexlifecycle.DeleteLifecyclePolicyRequest;
 import org.elasticsearch.client.indexlifecycle.GetLifecyclePolicyRequest;
 import org.elasticsearch.client.indexlifecycle.GetLifecyclePolicyResponse;
-import org.elasticsearch.client.indexlifecycle.LifecyclePolicy;
 import org.elasticsearch.client.indexlifecycle.LifecyclePolicyMetadata;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.junit.Test;
@@ -29,12 +25,10 @@ import javax.annotation.Resource;
 public class GetLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
     public void get() throws Exception {
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /**2. 请求*/
         GetLifecyclePolicyRequest request =
@@ -50,7 +44,7 @@ public class GetLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearchApp
         String myPolicyName = myPolicyMetadata.getName();
         long version = myPolicyMetadata.getVersion();
         String lastModified = myPolicyMetadata.getModifiedDateString();
-        log.info("同步执行结果-->名称：{}，版本:{},上次修改时间：{}",myPolicyName,version,lastModified );
+        log.info("同步执行结果-->名称：{}，版本:{},上次修改时间：{}", myPolicyName, version, lastModified);
         /**4. 异步执行*/
 //        aynchronousGet(client,request);
 

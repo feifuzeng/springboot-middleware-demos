@@ -25,7 +25,8 @@ import org.springframework.util.StringUtils;
 @Configuration
 @Log4j2
 @Data
-public class ElacticSearchConfig {
+@Deprecated
+public class ElacticSearchSimpleConfig {
 
     private String host;
 

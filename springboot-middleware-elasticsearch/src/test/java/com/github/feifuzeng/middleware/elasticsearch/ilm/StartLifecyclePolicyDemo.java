@@ -1,7 +1,6 @@
 package com.github.feifuzeng.middleware.elasticsearch.ilm;
 
 import com.github.feifuzeng.middleware.elasticsearch.SpringbootMiddlewareElasticsearchApplicationTests;
-import com.github.feifuzeng.middleware.elasticsearch.crud.rest.ElacticSearchConfig;
 import lombok.extern.log4j.Log4j2;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.client.RequestOptions;
@@ -23,13 +22,10 @@ import javax.annotation.Resource;
 public class StartLifecyclePolicyDemo extends SpringbootMiddlewareElasticsearchApplicationTests {
 
     @Resource
-    private ElacticSearchConfig elacticSearchConfig;
+    private RestHighLevelClient client;
 
     @Test
     public void start() throws Exception {
-
-        /**1. 初始化 client*/
-        RestHighLevelClient client = elacticSearchConfig.initClient();
 
         /**2. 请求*/
         StartILMRequest request = new StartILMRequest();
