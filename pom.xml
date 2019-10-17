@@ -36,6 +36,7 @@
         <module>springboot-middleware-mybatis-plus</module>
         <module>springboot-middleware-canal</module>
         <module>springboot-middleware-webflux</module>
+        <module>springboot-middleware-eventbus</module>
     </modules>
 
     <dependencies>
