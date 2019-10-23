@@ -29,6 +29,7 @@
     </developers>
 
     <modules>
+        <module>springboot-middleware-base</module>
         <module>springboot-middleware-elasticsearch</module>
         <module>springboot-middleware-redis</module>
         <module>springboot-middleware-kafka</module>
@@ -37,6 +38,7 @@
         <module>springboot-middleware-canal</module>
         <module>springboot-middleware-webflux</module>
         <module>springboot-middleware-eventbus</module>
+        <module>springboot-middleware-feign</module>
     </modules>
 
     <dependencies>
