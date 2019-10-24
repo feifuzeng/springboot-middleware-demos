@@ -1,4 +1,4 @@
-package com.github.feifuzeng.middleware.feign.service;
+package com.github.feifuzeng.middleware.feign.client;
 
 import com.github.feifuzeng.middleware.feign.ReturnResult;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -13,7 +13,7 @@ import java.util.List;
  * @Description 测试FeignClient
  * @createTime 2019年10月23日 09:37:00
  */
-@FeignClient(name = "badGuy", url = "${bab.guy.url}", path = "api")
+@FeignClient(name = "badGuy", url = "${bab.guy.url}", path = "client")
 public interface BadGuyFeignClient {
 
     /**

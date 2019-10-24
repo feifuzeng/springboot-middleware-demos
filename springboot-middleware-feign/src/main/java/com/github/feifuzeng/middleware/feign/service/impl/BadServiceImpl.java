@@ -1,6 +1,6 @@
 package com.github.feifuzeng.middleware.feign.service.impl;
 
-import com.github.feifuzeng.middleware.feign.service.BadGuyFeignClient;
+import com.github.feifuzeng.middleware.feign.client.BadGuyFeignClient;
 import com.github.feifuzeng.middleware.feign.service.BadGuyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
