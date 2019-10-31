@@ -23,10 +23,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.feifuzeng</groupId>
+            <artifactId>springboot-middleware-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- 启用 log4j2  -->
