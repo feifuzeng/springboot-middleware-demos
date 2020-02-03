@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--加载数据库连接驱动包-->
+    <classPathEntry
+    location="/Users/feifuzeng/tydic/maven/repository/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar"/>
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/db_test"
+                        userId="root" password="root"/>
+
+        <!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--Model存放位置-->
+        <javaModelGenerator targetPackage="com.github.feifuzeng.middleware.mybatis.domain.po"
+                            targetProject="src/main/java"/>
+        <!--Mapper xml文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources"/>
+        <!--&lt;!&ndash;Mapper 接口存放位置&ndash;&gt;-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.github.feifuzeng.middleware.mybatis.domain.mapper"
+                             targetProject="src/main/java"/>
+        <!--配置需要用到的数据表-->
+        <!--<table schema="shiwo" modelType="flat" tableName="t_crm_marketing_activity_code" domainObjectName="MarketingActivityCode"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            &lt;!&ndash;<columnOverride column="type" javaType="java.lang.Short"></columnOverride>&ndash;&gt;
+        </table>-->
+
+        <!--<table schema="shiwo" modelType="flat" tableName="t_crm_condition_activity_life_cycle_type" domainObjectName="ConditionActivityLifeCyCleType"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash;<columnOverride column="type" javaType="java.lang.Short"></columnOverride>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table schema="shiwo" modelType="flat" tableName="t_crm_condition_activity_user_behavior" domainObjectName="ConditionActivityUserBehavior"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash;<columnOverride column="type" javaType="java.lang.Short"></columnOverride>&ndash;&gt;-->
+        <!--</table>-->
+
+        <!--<table tableName="t_qms_question" domainObjectName="QmsQuestion"-->
+               <!--enableCountByExample="false"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+
+        <table tableName="user" domainObjectName="UserPO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+    </context>
+</generatorConfiguration>
