@@ -11,7 +11,7 @@
     <groupId>com.github.feifuzeng</groupId>
     <artifactId>springboot-middleware-eventbus</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eventbus</name>
+    <name>springboot-middleware-eventbus</name>
     <description>学习EventBus示例工程</description>
 
     <properties>

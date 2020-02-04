@@ -1,5 +1,6 @@
-package com.github.feifuzeng.middleware.feign.entity;
+package com.github.feifuzeng.middleware.base.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * @createTime 2019年10月23日 16:30:00
  */
 @Data
+@AllArgsConstructor
 public class User {
 
     private String userName;

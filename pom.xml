@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <demos.version>0.0.1-SNAPSHOT</demos.version>
     </properties>
 
     <developers>
@@ -30,6 +31,7 @@
 
     <modules>
         <module>springboot-middleware-base</module>
+        <module>springboot-middleware-api</module>
         <module>springboot-middleware-elasticsearch</module>
         <module>springboot-middleware-redis</module>
         <module>springboot-middleware-kafka</module>

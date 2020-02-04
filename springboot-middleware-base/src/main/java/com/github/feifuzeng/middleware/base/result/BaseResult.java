@@ -12,10 +12,6 @@ public class BaseResult implements Serializable {
 
     public static final BaseResult SUCCESS = new BaseResult();
 
-    /**
-     * 标识本次调用是否返回
-     */
-    private boolean           success;
 
     /**
      * 本次调用返回code，一般为错误代码
@@ -29,7 +25,6 @@ public class BaseResult implements Serializable {
 
     public BaseResult() {
         this.code = CommonResultCode.SUCCESS.code;
-        this.success = true;
         this.message = CommonResultCode.SUCCESS.message;
     }
 
@@ -52,7 +47,6 @@ public class BaseResult implements Serializable {
      */
     public <R extends BaseResult> R setErrorMessage(int code, String message) {
         this.code = code;
-        this.success = false;
         this.message = message;
         return (R) this;
     }
@@ -65,14 +59,12 @@ public class BaseResult implements Serializable {
      */
     public <R extends BaseResult> R setErrorMessage(String message) {
         this.code = CommonResultCode.FAILED.code;
-        this.success = false;
         this.message = message;
         return (R) this;
     }
 
     public <R extends BaseResult> R setErrorMessage(IErrorCode code, Object... args) {
         this.code = code.getCode();
-        this.success = false;
         this.message = String.format(code.getMessage(), args);
         return (R) this;
     }
@@ -87,27 +79,12 @@ public class BaseResult implements Serializable {
      */
     public <R extends BaseResult> R setError(IErrorCode errCode, Object... args) {
         this.code = errCode.getCode();
-        this.success = false;
         if (args == null || args.length == 0) {
             this.message = errCode.getMessage();
         } else {
             this.message = String.format(errCode.getMessage(), args);
         }
         return (R) this;
-    }
-
-    /**
-     * @return the success
-     */
-    public boolean isSuccess() {
-        return success;
-    }
-
-    /**
-     * @param success the success to set
-     */
-    public void setSuccess(boolean success) {
-        this.success = success;
     }
 
     /**

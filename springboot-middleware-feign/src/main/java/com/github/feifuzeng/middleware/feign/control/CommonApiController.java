@@ -1,9 +1,9 @@
 package com.github.feifuzeng.middleware.feign.control;
 
+import com.github.feifuzeng.middleware.base.entity.User;
 import com.github.feifuzeng.middleware.base.result.PlainResult;
 import com.github.feifuzeng.middleware.feign.client.v1.BasicApiClient;
 import com.github.feifuzeng.middleware.feign.client.v2.CommonApiClient;
-import com.github.feifuzeng.middleware.feign.entity.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;

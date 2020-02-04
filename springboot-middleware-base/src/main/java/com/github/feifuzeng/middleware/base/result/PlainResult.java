@@ -34,7 +34,7 @@ public class PlainResult<T> extends BaseResult {
     @Override
     public String toString() {
         return "{" +
-                ",code=" + this.getCode() +
+                "code=" + this.getCode() +
                 ",message=" + this.getMessage() +
                 ",data=" + data +
                 '}';
